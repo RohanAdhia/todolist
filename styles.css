@@ -90,7 +90,8 @@ ul li.checked::before {
 /* Style the header */
 .header {
   /* background-color: #87AAAA; */
-  background-color: #FFE699;
+  /* background-color: #FFE699; */
+  background-color: #B4C6A6;
   padding: 30px 40px;
   color: white;
   text-align: center;
@@ -135,7 +136,8 @@ input {
   margin-left: 2.1875rem;
   width: 20%;
   /* background: #87AAAA; */
-  background-color:#FFE699;
+  /* background-color:#FFE699; */
+  background-color: #B4C6A6;
   border: 2px solid #000;
   /* font-family: 'Roboto', sans-serif; */
   font-family: 'Montserrat', sans-serif;
@@ -150,5 +152,6 @@ input {
 
 .addBtn:hover {
   /* background-color: #C8E3D4; */
-  background-color: #FFF9B6;
+  /* background-color: #FFF9B6; */
+  background-color: #FFC286;
 }
