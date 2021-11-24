@@ -76,7 +76,7 @@ function newElement() {
   }
 
   var span_edit = document.createElement("SPAN");
-  var edit_txt = document.createTextNode("🖉");
+  var edit_txt = document.createTextNode("✏️");
   span_edit.className = "edit";
   span_edit.appendChild(edit_txt);
   li.appendChild(span_edit);
@@ -159,7 +159,8 @@ function loadList() {
       }
 
       var span_edit = document.createElement("SPAN");
-      var edit_txt = document.createTextNode("🖉");
+      // var edit_txt = document.createTextNode("🖉");
+      var edit_txt = document.createTextNode("✏️");
       span_edit.className = "edit";
       span_edit.appendChild(edit_txt);
       li.appendChild(span_edit);
