@@ -11,7 +11,8 @@ for (i = 0; i < myNodelist.length; i++) {
   span.className = "close";
   span.appendChild(txt);
   myNodelist[i].appendChild(span);
-
+  saveList();
+  window.location.reload();
 }
 
 
@@ -22,7 +23,10 @@ var i;
 for (i = 0; i < close.length; i++) {
   close[i].onclick = function() {
     var div = this.parentElement;
-    div.style.display = "none";
+    // div.style.display = "none";
+    div.remove();
+    saveList();
+    window.location.reload();
   }
 }
 
@@ -34,6 +38,8 @@ var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
+    saveList();
+    window.location.reload();
   }
 }, false);
 
@@ -47,6 +53,8 @@ function newElement() {
     alert("You must write something!");
   } else {
     document.getElementById("myUL").appendChild(li);
+    saveList();
+    // window.location.reload();
   }
   document.getElementById("myInput").value = "";
 
@@ -59,7 +67,11 @@ function newElement() {
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
       var div = this.parentElement;
-      div.style.display = "none";
+      // div.style.display = "none";
+      div.remove();
+      saveList();
+      // loadList();
+      window.location.reload();
     }
   }
 
@@ -75,9 +87,12 @@ function newElement() {
       var div = this.parentElement.childNodes[0].textContent;
       // console.log(div);
       document.getElementById("myInput").value = div;
-      this.parentElement.style.display = "none";
+      // this.parentElement.style.display = "none";
+      this.parentElement.remove();
       document.getElementById("myInput").focus();
-
+      saveList();
+      // loadList();
+      // window.location.reload();
     }
   }
 
@@ -92,8 +107,78 @@ function newElement() {
 //   }
 // }
 
-  document.getElementById("myInput").addEventListener("keypress", function() {
-    // event.preventDefault();
-    if (event.keyCode === 13)
-      newElement();
-  });
+document.getElementById("myInput").addEventListener("keypress", function() {
+  // event.preventDefault();
+  if (event.keyCode === 13)
+    newElement();
+});
+
+
+var toDoListItems = document.querySelector("#myUL");
+
+function saveList() {
+  var toDos = [];
+  for (var i = 0; i < toDoListItems.children.length; i++) {
+    var toDo = toDoListItems.children.item(i).childNodes[0];
+    var toDoInfo = {
+      "task": toDo.textContent,
+      "completed": toDoListItems.children.item(i).classList.contains("checked")
+    };
+    toDos.push(toDoInfo);
+  }
+  // alert(JSON.stringify(toDos));
+  localStorage.setItem("toDos", JSON.stringify(toDos));
+}
+
+function loadList() {
+  if (localStorage.getItem("toDos") != null) {
+    var toDos = JSON.parse(localStorage.getItem("toDos"));
+
+    for (var i = 0; i < toDos.length; i++) {
+      var toDo = toDos[i];
+      var li = document.createElement("li");
+      var t = document.createTextNode(toDo.task);
+      li.appendChild(t);
+      if (toDo.completed === true) {
+        li.className = "checked";
+      }
+      document.getElementById("myUL").appendChild(li);
+      var span = document.createElement("SPAN");
+      var txt = document.createTextNode("\u00D7");
+      span.className = "close";
+      span.appendChild(txt);
+      li.appendChild(span);
+      for (var j = 0; j < close.length; j++) {
+        close[j].onclick = function() {
+          var div = this.parentElement;
+          div.remove();
+          saveList();
+          // loadList();
+          window.location.reload();
+        }
+      }
+
+      var span_edit = document.createElement("SPAN");
+      var edit_txt = document.createTextNode("🖉");
+      span_edit.className = "edit";
+      span_edit.appendChild(edit_txt);
+      li.appendChild(span_edit);
+      var edit = document.getElementsByClassName("edit");
+
+      for (var k = 0; k < edit.length; k++) {
+        edit[k].onclick = function() {
+          var div = this.parentElement.childNodes[0].textContent;
+          // console.log(div);
+          document.getElementById("myInput").value = div;
+          this.parentElement.remove();
+          document.getElementById("myInput").focus();
+          saveList();
+          // window.location.reload();
+        }
+      }
+
+    }
+  }
+}
+// saveList();
+loadList();
