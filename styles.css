@@ -155,3 +155,79 @@ input {
   /* background-color: #FFF9B6; */
   background-color: #FFC286;
 }
+
+/**************************************************************************************Media Query Code Starts Here************************************************************************/
+/* @media only screen and (max-width: 1000px) { */
+@media only screen
+  /* and (min-device-width : 768px)  */
+  and (max-device-width : 1024px)
+  and (orientation : portrait) {
+
+  /* body {
+    background-color: lightblue;
+  } */
+
+  .header-text {
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-size: 5rem;
+    color: #000;
+  }
+
+  .dev-text {
+    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Roboto', sans-serif; */
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #000;
+  }
+
+  input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    /* width: 75%; */
+    width: 60%;
+    padding: 10px;
+    /* float: left; */
+    display: inline-block;
+    font-size: 32px;
+  }
+
+  /* Style the "Add" button */
+  .addBtn {
+    padding: 8px;
+    display: inline-block;
+    margin-left: 2.1875rem;
+    width: 20%;
+    /* background: #87AAAA; */
+    /* background-color:#FFE699; */
+    background-color: #B4C6A6;
+    border: 2px solid #000;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Montserrat', sans-serif;
+    color: #000;
+    /* float: left; */
+    text-align: center;
+    font-size: 32px;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+  }
+
+  ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    background: #eee;
+    font-size: 36px;
+    transition: 0.2s;
+    /* border: 0.5px solid #000; */
+    /* make the list items unselectable */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+}
