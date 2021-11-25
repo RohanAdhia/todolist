@@ -229,5 +229,23 @@ input {
     -ms-user-select: none;
     user-select: none;
   }
+  
+  .close {
+    position: absolute;
+    right: 1%;
+    padding: 10px 16px 10px 16px;
+    float: right;
+    top: 0;
+  }
 
+
+  /* Style the edit button */
+  .edit {
+    position: absolute;
+    float: right;
+    right: 6%;
+    top: 0;
+    padding: 10px 16px 10px 16px;
+  }
+    
 }
